@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentPeople">
+
+    <fragment
+        tools:layout="@layout/fragment_people"
+        android:id="@+id/fragmentPeople"
+        android:name="com.rodrigo.starwars.fragments.FragmentPeople"
+        android:label="FragmentPeople" />
+</navigation>
