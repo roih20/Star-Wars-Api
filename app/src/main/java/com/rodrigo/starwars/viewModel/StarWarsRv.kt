@@ -10,10 +10,10 @@ import com.rodrigo.starwars.api.Results
 
 class StarWarsRv: RecyclerView.Adapter<StarWarsRv.ViewHolder>() {
 
-    private var characterList: List<Results> ?= null
+    private var character = emptyList<Results>()
 
-    fun setData(newList: Results){
-        characterList = listOf(newList)
+    fun setData(newList: List<Results>){
+        character = newList
         notifyDataSetChanged()
     }
 
@@ -21,7 +21,13 @@ class StarWarsRv: RecyclerView.Adapter<StarWarsRv.ViewHolder>() {
 
         fun bind(response: Results){
             itemView.apply {
-                findViewById<TextView>(R.id.name_txt).text = response.results.toString()
+
+                response.results.forEach { starWarsPeople ->
+                    findViewById<TextView>(R.id.name_txt).text = starWarsPeople.name
+                    findViewById<TextView>(R.id.gender_txt).text = starWarsPeople.gender
+                    findViewById<TextView>(R.id.height_txt).text = starWarsPeople.height.toString()
+                }
+
             }
         }
     }
@@ -34,10 +40,12 @@ class StarWarsRv: RecyclerView.Adapter<StarWarsRv.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       characterList?.let {
+       character?.let {
            holder.bind(it[position])
        }
     }
 
-    override fun getItemCount(): Int  = characterList?.size ?: 0
+    override fun getItemCount(): Int{
+        return character.size
+    }
 }

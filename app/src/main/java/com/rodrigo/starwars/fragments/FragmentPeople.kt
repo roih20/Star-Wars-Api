@@ -54,7 +54,7 @@ class FragmentPeople: Fragment() {
         starWarsViewModel.characterList.observe(viewLifecycleOwner){ response ->
             if (response.isSuccessful){
                 response.body()?.let {
-                    rvAdapter.setData(it)
+                    rvAdapter.setData(listOf(it))
                 }
             }
 
