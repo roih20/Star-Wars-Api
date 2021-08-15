@@ -17,7 +17,7 @@ class StarWarsViewModel(private val repository: StarWarsRepository): ViewModel()
 
     private var _loading = MutableLiveData(View.GONE)
     val loading: LiveData<Int?> get() = _loading
-    var characterList = MutableLiveData<Response<Results>>()
+    var characterList = MutableLiveData<Results>()
 
     fun getCharacters(){
         _loading.value = View.VISIBLE

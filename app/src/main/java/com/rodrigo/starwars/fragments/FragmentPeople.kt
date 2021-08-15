@@ -51,13 +51,9 @@ class FragmentPeople: Fragment() {
 
         starWarsViewModel.getCharacters()
 
-        starWarsViewModel.characterList.observe(viewLifecycleOwner){ response ->
-            if (response.isSuccessful){
-                response.body()?.let {
-                    rvAdapter.setData(listOf(it))
-                }
+        starWarsViewModel.characterList.observe(viewLifecycleOwner){
+                    rvAdapter.setData(it.results)
             }
 
         }
     }
-}

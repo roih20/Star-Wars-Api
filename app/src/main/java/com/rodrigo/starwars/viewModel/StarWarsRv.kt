@@ -7,26 +7,24 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.starwars.R
 import com.rodrigo.starwars.api.Results
+import com.rodrigo.starwars.api.StarWarsPeople
 
 class StarWarsRv: RecyclerView.Adapter<StarWarsRv.ViewHolder>() {
 
-    private var character = emptyList<Results>()
+    private var character = ArrayList<StarWarsPeople>()
 
-    fun setData(newList: List<Results>){
-        character = newList
+    fun setData(newList: ArrayList<StarWarsPeople>){
+        this.character = newList
         notifyDataSetChanged()
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
-        fun bind(response: Results){
+        fun bind(starWarsPeople: StarWarsPeople){
             itemView.apply {
-
-                response.results.forEach { starWarsPeople ->
                     findViewById<TextView>(R.id.name_txt).text = starWarsPeople.name
-                    findViewById<TextView>(R.id.gender_txt).text = starWarsPeople.gender
                     findViewById<TextView>(R.id.height_txt).text = starWarsPeople.height.toString()
-                }
+                    findViewById<TextView>(R.id.gender_txt).text = starWarsPeople.gender
 
             }
         }

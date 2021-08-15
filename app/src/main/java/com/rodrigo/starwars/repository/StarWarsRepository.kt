@@ -10,10 +10,11 @@ import retrofit2.Response
 class StarWarsRepository(private val API: API) {
 
 
-    suspend fun getCharacters():Response<Results>{
-        return  withContext(Dispatchers.IO){
+    suspend fun getCharacters(): Results {
+        return withContext(Dispatchers.IO) {
             API.service.getAllPeople()
         }
     }
 
-}
+    }
+
